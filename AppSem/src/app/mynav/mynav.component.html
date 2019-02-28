@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+      <img src="./../../assets/imagen/logo-inatec.png" class="image1">
+    <mat-toolbar class="toolbar">Menu
+    </mat-toolbar>
+    <img src="./../../assets/imagen/logo_gobierno.png" class="image1">
+    <mat-nav-list>
+        <hr /><br> 
+      <a mat-list-item routerLink= "/asistencia">Asistencia</a>
+      <a mat-list-item routerLink= "/carrera">Carrera</a>
+      <a mat-list-item routerLink= "/contrato">Contrato</a>
+      <a mat-list-item routerLink= "/docente">Docente</a>
+      <a mat-list-item routerLink= "/grupo">Grupo</a>
+      <hr /> <br> 
+      <a mat-list-item routerLink= "/inicio">Inicio</a>
+      <a mat-list-item routerLink= "/contacto">Contacto</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="spanclass"></span>
+      <a mat-list-item routerLink="/login"><mat-icon class="iconclass" matTooltip="Iniciar Sesión">account_circle</mat-icon>
+      </a>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content> 
+  </mat-sidenav-content>
+</mat-sidenav-container>

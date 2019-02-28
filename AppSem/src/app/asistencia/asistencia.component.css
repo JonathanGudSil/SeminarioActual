@@ -1,0 +1,54 @@
+.image1{
+    top: 3px;
+    min-width: 150px;
+    max-width: 500px;  
+    text-align: center;
+    padding: 2%;
+    width: 320px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+}
+
+.center{
+    text-align: center;
+}
+
+CSS
+/* Structure */
+.table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.buttom{
+    left: 1000px;;
+    width: 100px;
+ }
+
+ .example-form{
+  width: 250px;
+  left: 12%;
+  margin: 0 auto;
+  padding: 2px;
+  height: 80px;
+  min-width: 150px;
+  max-width: 350px;
+  width: 100%;
+ }
+
+ .mat-elevation-z8{
+  width: 900px;
+  margin: 0 auto;
+  padding: 2px;
+  height: 250px;
+  min-width: 150px;
+  max-width: 800px;
+  width: 100%;
+  top: 0%;
+ }
