@@ -9,6 +9,7 @@ import { ContratoComponent } from './contrato/contrato.component';
 import { DocenteComponent } from './docente/docente.component';
 import { GrupoComponent } from './grupo/grupo.component';
 import { ModuloComponent } from './modulo/modulo.component';
+import { AgregarCarreraComponent } from './agregar-carrera/agregar-carrera.component';
 
 const routes: Routes = [
   { path: '', component : LoginComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'docente', component : DocenteComponent},
   { path: 'grupo', component : GrupoComponent},
   { path: 'modulo', component : ModuloComponent},
+  { path: 'agregar-carrera', component : AgregarCarreraComponent},
   { path: '**', component : InicioComponent },
 ];
 

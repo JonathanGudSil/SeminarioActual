@@ -1,41 +1,47 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { AgregarCarreraComponent } from '../agregar-carrera/agregar-carrera.component';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Tecnico en Computacion'},
+  {position: 2, name: 'Contabilidad' },
+  {position: 3, name: 'Administracion de Empresa'},
+  {position: 4, name: 'Belleza'},
+  {position: 5, name: 'Costura'},
+  {position: 6, name: 'Cocina'},
+  {position: 7, name: 'Metalurgica'},
+];
 
 @Component({
   selector: 'app-carrera',
   templateUrl: './carrera.component.html',
   styleUrls: ['./carrera.component.css']
 })
+
 export class CarreraComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+openDialog() {
+  const dialogRef = this.dialog.open(AgregarCarreraComponent);
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+}
 
   ngOnInit() {
   }
-
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];

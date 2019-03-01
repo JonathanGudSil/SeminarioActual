@@ -22,8 +22,13 @@ import { AsistenciaComponent } from './asistencia/asistencia.component';
 import {Component} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
-
-
+import { AgregarCarreraComponent} from './agregar-carrera/agregar-carrera.component';
+import { from } from 'rxjs';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AgregarAsistenciaComponent } from './agregar-asistencia/agregar-asistencia.component';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireModule} from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     DocenteComponent,
     GrupoComponent,
     ModuloComponent,
-    AsistenciaComponent
+    AsistenciaComponent,
+    AgregarCarreraComponent,
+    AgregarAsistenciaComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,8 +60,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCardModule,
     MatInputModule,
     MatTableModule,
+    MatDialogModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AgregarCarreraComponent, CarreraComponent]
 })
+
 export class AppModule { }

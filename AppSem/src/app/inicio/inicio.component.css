@@ -79,3 +79,9 @@ footer {
   color: white;
   text-align: center;
 }
+
+.etiqueta{
+    text-align: center;
+    font-weight:bold;
+    font-size: 18px;
+}
