@@ -27,8 +27,8 @@ CSS
 }
 
 .buttom{
-    left: 1000px;;
-    width: 100px;
+    left: 750px;;
+    width: 200px;
  }
 
  .example-form{
@@ -52,3 +52,8 @@ CSS
   width: 100%;
   top: 0%;
  }
+ .SupTab{
+  background-color: aquamarine;
+  font-size: 20px;
+  font-weight:bold;
+} 

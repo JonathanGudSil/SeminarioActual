@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {MatDialogModule} from '@angular/material/dialog';
 
-import { DocenteComponent } from './docente.component';
+import { AgregarContratoComponent } from './agregar-contrato.component';
 
-describe('DocenteComponent', () => {
-  let component: DocenteComponent;
-  let fixture: ComponentFixture<DocenteComponent>;
+describe('AgregarContratoComponent', () => {
+  let component: AgregarContratoComponent;
+  let fixture: ComponentFixture<AgregarContratoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocenteComponent ]
+      declarations: [ AgregarContratoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocenteComponent);
+    fixture = TestBed.createComponent(AgregarContratoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

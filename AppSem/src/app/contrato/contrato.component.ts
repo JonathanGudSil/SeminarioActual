@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { AgregarContratoComponent } from '../agregar-contrato/agregar-contrato.component';
 
 @Component({
   selector: 'app-contrato',
@@ -7,31 +9,39 @@ import {MatTableDataSource} from '@angular/material';
   styleUrls: ['./contrato.component.css']
 })
 export class ContratoComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['idContrato', 'grupo', 'tipoContrato', 'noInss', 'fechaInicio', 'fechaFin',];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor() { }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  constructor(public dialog: MatDialog) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AgregarContratoComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit() {
   }
 
 }
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  idContrato: number;
+  grupo: string;
+  tipoContrato: string;
+  noInss: number;
+  fechaInicio: string;
+  fechaFin: string; 
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {idContrato: 1, grupo: 'Control de Calidad', tipoContrato: 'Servicio', noInss: 1253, fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idContrato: 2, grupo: 'Medio Ambiente', tipoContrato: 'Servicio', noInss: 5483, fechaInicio: '2019/01/282', fechaFin: '2019/01/28'},
+  {idContrato: 3, grupo: 'Seguridad', tipoContrato: 'Servicio', noInss: 8974, fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idContrato: 4, grupo: 'Base de Datos', tipoContrato: 'Servicio', noInss: 4587, fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idContrato: 3, grupo: 'Seguridad', tipoContrato: 'Servicio', noInss: 6358, fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
 ];

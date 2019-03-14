@@ -1,16 +1,15 @@
-<div class="col m12 card subside">
+<div class="div1">
     <img src="./../../assets/imagen/logo.png" class="image1">
-    <h4 class="center"> Carreras Registradas</h4>
-</div>
+    <h2 class="center"> Carreras Registradas</h2>
 
-
-
-    <button mat-raised-button class="buttom" (click)="openDialog()">Agregar</button>
+    <button mat-raised-button class="buttom" (click)="openDialog()">Agregar Nueva Carrera</button>
 
     <mat-form-field class="example-form">
+
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda Rápida">
       </mat-form-field>
       
+        
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
         <!-- Position Column -->
@@ -43,3 +42,5 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
+</div>

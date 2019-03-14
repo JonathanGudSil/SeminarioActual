@@ -3,11 +3,11 @@ import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
-  selector: 'app-agregar-asistencia',
-  templateUrl: './agregar-asistencia.component.html',
-  styleUrls: ['./agregar-asistencia.component.css']
+  selector: 'app-agregar-grupo',
+  templateUrl: './agregar-grupo.component.html',
+  styleUrls: ['./agregar-grupo.component.css']
 })
-export class AgregarAsistenciaComponent implements OnInit {
+export class AgregarGrupoComponent implements OnInit {
 
   constructor() { }
 

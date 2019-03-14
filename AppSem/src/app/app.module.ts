@@ -29,6 +29,10 @@ import { AgregarAsistenciaComponent } from './agregar-asistencia/agregar-asisten
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
+import { AgregarDocenteComponent } from './agregar-docente/agregar-docente.component';
+import { AgregarGrupoComponent } from './agregar-grupo/agregar-grupo.component';
+import { AgregarContratoComponent } from './agregar-contrato/agregar-contrato.component';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +49,9 @@ import { environment } from 'src/environments/environment';
     AsistenciaComponent,
     AgregarCarreraComponent,
     AgregarAsistenciaComponent,
+    AgregarDocenteComponent,
+    AgregarGrupoComponent,
+    AgregarContratoComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +74,18 @@ import { environment } from 'src/environments/environment';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [AgregarCarreraComponent, CarreraComponent]
+  entryComponents: [
+    AgregarCarreraComponent, 
+    CarreraComponent, 
+    AgregarAsistenciaComponent, 
+    AsistenciaComponent, 
+    AgregarDocenteComponent, 
+    DocenteComponent, 
+    AgregarGrupoComponent, 
+    GrupoComponent,
+    AgregarContratoComponent,
+    ContratoComponent,
+  ],
 })
 
 export class AppModule { }

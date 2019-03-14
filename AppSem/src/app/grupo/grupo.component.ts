@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
+import { AgregarGrupoComponent } from '../agregar-grupo/agregar-grupo.component';
 
 @Component({
   selector: 'app-grupo',
@@ -7,10 +9,21 @@ import {MatTableDataSource} from '@angular/material';
   styleUrls: ['./grupo.component.css']
 })
 export class GrupoComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['idGrupo', 'modulo', 'carrera', 'turno', 'fechaInicio', 'fechaFin'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor() { }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  constructor(public dialog: MatDialog) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AgregarGrupoComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit() {
   }
@@ -18,21 +31,25 @@ export class GrupoComponent implements OnInit {
 }
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  idGrupo: number;
+  modulo: string;
+  carrera: string;
+  turno: string;
+  fechaInicio: string;
+  fechaFin: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {idGrupo: 1, modulo: 'Control de Calidad', carrera: 'Administracion', turno: 'Vespertino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 2, modulo: 'Medio Ambiente', carrera: 'Secretaria', turno: 'Vespertino', fechaInicio: '2019/01/282', fechaFin: '2019/01/28'},
+  {idGrupo: 3, modulo: 'Seguridad', carrera: 'Administracion', turno: 'Matutino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 4, modulo: 'Base de Datos', carrera: 'Programacion', turno: 'Vespertino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 3, modulo: 'Seguridad', carrera: 'Administracion', turno: 'Matutino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 3, modulo: 'Seguridad', carrera: 'Administracion', turno: 'Matutino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 5, modulo: 'Programacion I', carrera: 'Programacion ', turno: 'Nocturno', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 6, modulo: 'Office', carrera: 'Computacion', turno: 'Nocturno', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 7, modulo: 'Contabilidad I', carrera: 'Administracion', turno: 'Vespertino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 8, modulo: 'Finanzas', carrera: 'Contabilidad', turno: 'matutino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 9, modulo: 'Español', carrera: 'Administracion', turno: 'Vespertino', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
+  {idGrupo: 10, modulo: 'Matematica', carrera: 'Administracion', turno: 'Nocturno', fechaInicio: '2019/01/28', fechaFin: '2019/01/28'},
 ];

@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModuloComponent implements OnInit {
 
+  /*applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }*/
+
   constructor() { }
 
   ngOnInit() {
