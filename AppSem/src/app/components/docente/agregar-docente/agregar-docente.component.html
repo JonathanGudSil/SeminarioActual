@@ -1,0 +1,52 @@
+<div>
+  <mat-card class="card">
+
+    <div>
+      <img src="./../../assets/imagen/logo-inatec.png" class="image">
+      <h2 class="center"> Agregar un Docente </h2>
+    </div>
+
+    <form class="example-form" name="formDocente" #formDocente="ngForm"  (ngSubmit)="onGuardarDocente(formDocente)" >            
+      
+      <div> 
+        
+       <input type="hidden" [(ngModel)]="this.dataApi.selectedDocente.id" name="id" >      
+      </div>
+
+      <mat-form-field  class = "example-full-width" > 
+          <mat-icon matPrefix>
+              <br> table_chart &nbsp;
+          </mat-icon>
+         <input matInput [(ngModel)]="this.dataApi.selectedDocente.noInss" name="noInss"  placeholder = "No. Inss" type="text" required >      
+      </mat-form-field >
+
+      <mat-form-field  class = "example-full-width" > 
+         <mat-icon matPrefix>
+            <br> text_fields &nbsp;
+        </mat-icon>
+        <input matInput [(ngModel)]="this.dataApi.selectedDocente.nombres" name="nombres"  placeholder = "Nombres" type="text" required > 
+      </mat-form-field >
+
+      <mat-form-field  class = "example-full-width" > 
+        <mat-icon matPrefix>
+            <br> text_fields &nbsp;
+        </mat-icon>
+        <input matInput [(ngModel)]="this.dataApi.selectedDocente.apellidos" name="apellidos"  placeholder = "Apellidos" type="text" required > 
+      </mat-form-field >
+
+      <mat-form-field  class = "example-full-width" > 
+        <mat-icon matPrefix>
+            <br> local_phone &nbsp;
+        </mat-icon>
+        <input matInput [(ngModel)]="this.dataApi.selectedDocente.telefono" name="telefono"  placeholder = "Teléfono" type="text" required > 
+      </mat-form-field >
+
+    <div class="div1">
+        <button class="buttom" mat-raised-button color="primary" routerLink="../docente">Agregar</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; 
+        <button (click)="resetForm()" mat-raised-button color="primary" mat-button  mat-dialog-close > Cancelar </button > 
+    </div>
+
+    </form>
+  </mat-card>
+</div>

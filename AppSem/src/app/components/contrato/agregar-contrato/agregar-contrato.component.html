@@ -1,0 +1,53 @@
+<div>
+  <mat-card class="card">
+
+    <div>
+      <img src="./../../assets/imagen/logo-inatec.png" class="image">
+      <h2 class="center"> Agregar un Contrato </h2>
+    </div>
+
+    <form class="example-form">            
+      <mat-form-field  class = "example-full-width" > 
+        <mat-icon matPrefix>
+          <br> supervisor_account &nbsp;
+        </mat-icon>
+          <input matInput  placeholder = "Grupo" type="text" required > 
+    </mat-form-field >
+
+    <mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> lista &nbsp;
+      </mat-icon>
+      <input matInput  placeholder = "Tipo de Contrato" type="text" required > 
+    </mat-form-field >
+
+    <mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> redeem &nbsp;
+      </mat-icon>
+    <input matInput  placeholder = "No. Inss" type="text" required > 
+    </mat-form-field >
+
+    <mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> perm_contact_calendar &nbsp;
+      </mat-icon>
+      <input matInput  placeholder = "Fecha de Inicio" type="text" required > 
+    </mat-form-field >
+
+    <mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> perm_contact_calendar &nbsp;
+      </mat-icon>
+      <input matInput  placeholder = "Fecha de Fin de Curso" type="text" required > 
+    </mat-form-field >
+
+    <div class="div1">
+        <button class="buttom" mat-raised-button color="primary" routerLink="../grupo">Agregar</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; 
+        <button mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
+    </div>
+
+    </form>
+  </mat-card>
+</div>

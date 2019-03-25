@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { ContactoComponent } from './contacto/contacto.component';
-import { CarreraComponent } from './carrera/carrera.component';
-import { AsistenciaComponent } from './asistencia/asistencia.component';
-import { ContratoComponent } from './contrato/contrato.component';
-import { DocenteComponent } from './docente/docente.component';
-import { GrupoComponent } from './grupo/grupo.component';
-import { ModuloComponent } from './modulo/modulo.component';
-import { AgregarCarreraComponent } from './agregar-carrera/agregar-carrera.component';
+import { LoginComponent } from './components/login/login.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { CarreraComponent } from './components/carrera/carrera.component';
+import { AsistenciaComponent } from './components/asistencia/asistencia.component';
+import { ContratoComponent } from './components/contrato/contrato.component';
+import { DocenteComponent } from './components/docente/docente.component';
+import { GrupoComponent } from './components/grupo/grupo.component';
+import { ModuloComponent } from './components/modulo/modulo.component';
+import { AgregarCarreraComponent } from './components/carrera/agregar-carrera/agregar-carrera.component';
 
 const routes: Routes = [
   { path: '', component : LoginComponent },
