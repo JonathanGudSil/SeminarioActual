@@ -9,7 +9,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatTableModule } from '@angular/material';
 import { LoginComponent } from './components/login/login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
-import { ContactoComponent } from './components/contacto/contacto.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -41,7 +40,6 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     MynavComponent,
     LoginComponent,
     InicioComponent,
-    ContactoComponent,
     CarreraComponent,
     ContratoComponent,
     DocenteComponent,

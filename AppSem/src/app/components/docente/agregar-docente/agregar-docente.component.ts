@@ -3,6 +3,7 @@ import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DocenteService} from './../../../service/docente.service';
 import { NgForm, FormsModule} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-docente',
@@ -18,8 +19,18 @@ export class AgregarDocenteComponent implements OnInit {
     {
     if (formDocente.value.id == null) {
       this.dataApi.addDocente(formDocente.value);
+      Swal.fire(
+        'Registrado!',
+        'You clicked the button!',
+        'success'
+      )
     } else {
       this.dataApi.updateDocente(formDocente.value);
+      Swal.fire(
+        'Actualizado!',
+        'You clicked the button!',
+        'success'
+      )
     }
     formDocente.resetForm();
     this.dialog.closeAll();
