@@ -7,22 +7,21 @@ import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { docenteInterface } from '../models/docente.modal';
 import { Observable } from 'rxjs/internal/Observable';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class DocenteService {
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(public afs: AngularFirestore) { }
 
-  private docenteCollection: AngularFirestoreCollection<docenteInterface>;
-  private docentes: Observable<docenteInterface[]>;
-  private docenteDoc: AngularFirestoreDocument<docenteInterface>;
-  private docente: Observable<docenteInterface>;
+  public docenteCollection: AngularFirestoreCollection<docenteInterface>;
+  public docentes: Observable<docenteInterface[]>;
+  public docenteDoc: AngularFirestoreDocument<docenteInterface>;
+  public docente: Observable<docenteInterface>;
   public selectedDocente: docenteInterface = {
     id: null,
   }
+  
   getAlldocentes() {
     this.docenteCollection = this.afs.collection<docenteInterface>('docente');
     return this.docentes = this.docenteCollection.snapshotChanges()

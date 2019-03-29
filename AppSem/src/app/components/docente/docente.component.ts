@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   templateUrl: './docente.component.html',
   styleUrls: ['./docente.component.css']
 })
+
 export class DocenteComponent implements OnInit {
   displayedColumns: string[] = ['noInss', 'nombres', 'apellidos', 'telefono','symbol'];
   dataSource = new MatTableDataSource<docenteInterface>();

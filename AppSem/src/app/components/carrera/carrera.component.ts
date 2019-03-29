@@ -2,21 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { AgregarCarreraComponent } from '../carrera/agregar-carrera/agregar-carrera.component';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Tecnico en Computacion'},
-  {position: 2, name: 'Contabilidad' },
-  {position: 3, name: 'Administracion de Empresa'},
-  {position: 4, name: 'Belleza'},
-  {position: 5, name: 'Costura'},
-  {position: 6, name: 'Cocina'},
-  {position: 7, name: 'Metalurgica'},
-];
+import { CarreraService } from '../../service/carrera.service';
+import { carreraInterface } from '../../models/carrera.modal';
+import { AngularFireAuth } from '@angular/fire/auth';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-carrera',
@@ -26,22 +15,61 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class CarreraComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<carreraInterface>();
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dataCarrera: CarreraService) { }
+
+  private carreras: carreraInterface[];
 
 openDialog() {
   const dialogRef = this.dialog.open(AgregarCarreraComponent);
-
   dialogRef.afterClosed().subscribe(result => {
     console.log(`Dialog result: ${result}`);
   });
 }
 
   ngOnInit() {
+    this.getListCarreras();
   }
+
+  getListCarreras() {
+    this.dataCarrera.getAllcarreras()
+      .subscribe(carrera => {
+        this.dataSource.data = carrera;
+      });
+  }
+
+  onDeleteCarrera(id: string): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.dataCarrera.deleteCarrera(id);
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
 }
 
+onPreUpdateCarrera(carrera: carreraInterface) {
+  const dialogRef = this.dialog.open(AgregarCarreraComponent);
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+  
+  this.dataCarrera.selectedCarrera = Object.assign({}, carrera);
+}
+
+}

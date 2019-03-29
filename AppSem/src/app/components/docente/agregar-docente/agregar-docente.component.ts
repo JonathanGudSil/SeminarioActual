@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })  
 export class AgregarDocenteComponent implements OnInit {
 
-  constructor(public dialog:MatDialog,private dataApi:DocenteService) { }
+  constructor(public dialog:MatDialog,public dataApi:DocenteService) { }
 
   onGuardarDocente(formDocente: NgForm): void {
     if (formDocente.valid)
