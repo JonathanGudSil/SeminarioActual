@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 
 export class CarreraComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name'];
+  displayedColumns: string[] = ['position', 'name', 'symbol'];
   dataSource = new MatTableDataSource<carreraInterface>();
 
   applyFilter(filterValue: string) {

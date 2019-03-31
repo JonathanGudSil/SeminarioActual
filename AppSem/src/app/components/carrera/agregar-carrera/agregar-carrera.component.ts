@@ -43,10 +43,11 @@ resetForm(formCarrera?:NgForm)
     formCarrera.resetForm();
     this.dataApi.selectedCarrera ={
   id: null,
-  descripcion: '',
+  position: '',
+  name: '',
 }
 }
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 }

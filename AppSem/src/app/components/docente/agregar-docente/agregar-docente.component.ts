@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   templateUrl: './agregar-docente.component.html',
   styleUrls: ['./agregar-docente.component.css']
 })  
+
 export class AgregarDocenteComponent implements OnInit {
 
   constructor(public dialog:MatDialog,public dataApi:DocenteService) { }

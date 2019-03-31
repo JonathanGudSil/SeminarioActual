@@ -12,15 +12,20 @@
             <input type="hidden" [(ngModel)]="this.dataApi.selectedCarrera.id" name="id">      
         </div>      
         
+        <mat-form-field  class = "example-full-width" > 
+
+            <input matInput [(ngModel)]="this.dataApi.selectedCarrera.position" name = "position" placeholder = "Id Carrera" type="text" required > 
+        </mat-form-field >
+
       <mat-form-field  class = "example-full-width" > 
 
-          <input matInput [(ngModel)]="this.dataApi.selectedCarrera.descripcion" name = "descripcion" placeholder = "Descripción" type="text" required > 
+          <input matInput [(ngModel)]="this.dataApi.selectedCarrera.name" name = "name" placeholder = "Descripción" type="text" required > 
       </mat-form-field >
 
     <div class="div1">
         <button class="buttom" mat-raised-button color="primary" routerLink="../carrera">Agregar</button>
         &nbsp; &nbsp; &nbsp; &nbsp; 
-        <button mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
+        <button (click)="resetForm()" mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
     </div>
 
     </form>

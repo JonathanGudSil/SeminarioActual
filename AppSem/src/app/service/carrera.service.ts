@@ -37,11 +37,13 @@ export class CarreraService {
     addCarrera(carrera: carreraInterface): void {
       this.carreraCollection.add(carrera);
     }
+    
     updateCarrera(carrera: carreraInterface): void {
       let id = carrera.id;
       this.carreraDoc = this.afs.doc<carreraInterface>(`carrera/${id}`);
       this.carreraDoc.update(carrera);
     }
+
     deleteCarrera(id: string): void {
       this.carreraDoc = this.afs.doc<carreraInterface>(`carrera/${id}`);
       this.carreraDoc.delete();

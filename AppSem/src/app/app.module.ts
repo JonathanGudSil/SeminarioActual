@@ -33,6 +33,7 @@ import { AgregarGrupoComponent } from './components/grupo/agregar-grupo/agregar-
 import { AgregarContratoComponent } from './components/contrato/agregar-contrato/agregar-contrato.component';
 
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { RegistrarseComponent } from './components/login/registrarse/registrarse.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     AgregarDocenteComponent,
     AgregarGrupoComponent,
     AgregarContratoComponent,
+    RegistrarseComponent,
     
   ],
   imports: [
@@ -72,10 +74,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
     ReactiveFormsModule,
-    
     AngularFirestoreModule
-    
-
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -90,6 +89,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     GrupoComponent,
     AgregarContratoComponent,
     ContratoComponent,
+    RegistrarseComponent,
   ],
 })
 

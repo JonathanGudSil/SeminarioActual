@@ -1,4 +1,5 @@
 export interface carreraInterface {
-    id?: string;
-    descripcion?: string;
+  id?: string;  
+  position?: string;
+  name?: string;
   }
