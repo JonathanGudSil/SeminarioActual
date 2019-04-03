@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 
 export class DocenteComponent implements OnInit {
-  displayedColumns: string[] = ['noInss', 'nombres', 'apellidos', 'telefono','symbol'];
+  displayedColumns: string[] = ['noInss', 'nombres', 'apellidos', 'telefono', 'contrato','symbol'];
   dataSource = new MatTableDataSource<docenteInterface>();
 
   applyFilter(filterValue: string) {

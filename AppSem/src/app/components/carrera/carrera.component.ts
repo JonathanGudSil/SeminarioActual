@@ -20,6 +20,7 @@ export class CarreraComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  
   constructor(public dialog: MatDialog, private dataCarrera: CarreraService) { }
 
   private carreras: carreraInterface[];

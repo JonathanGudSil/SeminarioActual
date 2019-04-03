@@ -31,9 +31,9 @@ import { environment } from 'src/environments/environment';
 import { AgregarDocenteComponent } from './components/docente/agregar-docente/agregar-docente.component';
 import { AgregarGrupoComponent } from './components/grupo/agregar-grupo/agregar-grupo.component';
 import { AgregarContratoComponent } from './components/contrato/agregar-contrato/agregar-contrato.component';
-
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { RegistrarseComponent } from './components/login/registrarse/registrarse.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -74,7 +74,9 @@ import { RegistrarseComponent } from './components/login/registrarse/registrarse
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
     ReactiveFormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,7 +3,7 @@
 
     <div>
       <img src="./../../assets/imagen/logo-inatec.png" class="image">
-      <h2 class="center"> Ingresar una Carrera </h2>
+      <h2 class="center"> {{! this.dataApi.selectedCarrera.id? 'Ingresar nueva Carrera': 'Actualizar Carrera'}}</h2>
     </div>
 
     <form class="example-form" name="formCarrera" #formCarrera="ngForm"  (ngSubmit)="onGuardarCarrera(formCarrera)">  
@@ -17,13 +17,12 @@
             <input matInput [(ngModel)]="this.dataApi.selectedCarrera.position" name = "position" placeholder = "Id Carrera" type="text" required > 
         </mat-form-field >
 
-      <mat-form-field  class = "example-full-width" > 
-
+      <mat-form-field  class = "example-full-width" >
           <input matInput [(ngModel)]="this.dataApi.selectedCarrera.name" name = "name" placeholder = "Descripción" type="text" required > 
       </mat-form-field >
 
     <div class="div1">
-        <button class="buttom" mat-raised-button color="primary" routerLink="../carrera">Agregar</button>
+        <button class="buttom" mat-raised-button color="primary" routerLink="../carrera">Guardar</button>
         &nbsp; &nbsp; &nbsp; &nbsp; 
         <button (click)="resetForm()" mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
     </div>
