@@ -16,21 +16,21 @@
         <mat-icon matPrefix>
           <br> supervisor_account &nbsp;
         </mat-icon>
-          <input matInput  placeholder = "Tipo" type="text" required > 
+          <input matInput [(ngModel)]="this.dataApi.selectedContrato.tipo" name = "tipo" placeholder = "Tipo de Contrato" type="text" required  > 
     </mat-form-field >
 
     <mat-form-field  class = "example-full-width" > 
       <mat-icon matPrefix>
         <br> lista &nbsp;
       </mat-icon>
-      <input matInput  placeholder = "Fecha Inicio" type="text" required > 
+      <input matInput [(ngModel)]="this.dataApi.selectedContrato.fechai" name = "fechai"  placeholder = "Fecha Inicio" type="text" required > 
     </mat-form-field >
 
     <mat-form-field  class = "example-full-width" > 
       <mat-icon matPrefix>
         <br> redeem &nbsp;
       </mat-icon>
-    <input matInput  placeholder = "Fecha Fin" type="text" required > 
+    <input matInput [(ngModel)]="this.dataApi.selectedContrato.fechaf" name = "fechaf"  placeholder = "Fecha Fin" type="text" required > 
     </mat-form-field >
 
     <div class="div1">
