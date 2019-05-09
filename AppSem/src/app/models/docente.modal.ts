@@ -5,4 +5,6 @@ export interface docenteInterface {
     apellidos?: string;
     contrato?: string;
     telefono?: string;
+    username ?: string;
+    userpass ?: string;
   }

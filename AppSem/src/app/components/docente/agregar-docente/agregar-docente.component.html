@@ -1,58 +1,97 @@
-<div>
-  <mat-card class="card">
 
-    <div>
-      <img src="./../../assets/imagen/logo-inatec.png" class="image">
-      <h2 class="center"> {{! this.dataApi.selectedDocente.id? 'Ingresar nuevo Docente': 'Actualizar Docente'}} </h2>
+
+
+    <div style="text-align: center">
+      <!--<img src="./../../assets/imagen/logo-inatec.png" class="image">-->
+      <h2 class="center"> {{! this.dataApi.selectedDocente.id? 'Nuevo Docente': 'Actualizar Docente'}} </h2>
     </div>
 
-    <form class="example-form" name="formDocente" #formDocente="ngForm"  (ngSubmit)="onGuardarDocente(formDocente)" >            
-      
-      <div>  
-       <input type="hidden" [(ngModel)]="this.dataApi.selectedDocente.id" name="id" >      
-      </div>
-
-      <mat-form-field  class = "example-full-width" > 
-          <mat-icon matPrefix>
-              <br> table_chart &nbsp;
-          </mat-icon>
-         <input matInput [(ngModel)]="this.dataApi.selectedDocente.noInss" name="noInss"  placeholder = "No. Inss" type="text" required >      
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-         <mat-icon matPrefix>
-            <br> text_fields &nbsp;
-        </mat-icon>
-        <input matInput [(ngModel)]="this.dataApi.selectedDocente.nombres" name="nombres"  placeholder = "Nombres" type="text" required > 
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-        <mat-icon matPrefix>
-            <br> text_fields &nbsp;
-        </mat-icon>
-        <input matInput [(ngModel)]="this.dataApi.selectedDocente.apellidos" name="apellidos"  placeholder = "Apellidos" type="text" required > 
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-        <mat-icon matPrefix>
-            <br> text_fields &nbsp;
-        </mat-icon>
-        <input matInput [(ngModel)]="this.dataApi.selectedDocente.contrato" name="contrato"  placeholder = "Contrato" type="text" required > 
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-        <mat-icon matPrefix>
-            <br> local_phone &nbsp;
-        </mat-icon>
-        <input matInput [(ngModel)]="this.dataApi.selectedDocente.telefono" name="telefono"  placeholder = "Teléfono" type="text" required > 
-      </mat-form-field >
-
-    <div class="div1">
-        <button class="buttom" mat-raised-button color="primary" routerLink="../docente">Guardar</button>
-        &nbsp; &nbsp; &nbsp; &nbsp; 
-        <button (click)="resetForm()" mat-raised-button color="primary" mat-button  mat-dialog-close > Cancelar </button > 
-    </div>
-
+    <form style="height: 80%;" name="formDocente" #formDocente="ngForm"  (ngSubmit)="onGuardarDocente(formDocente)" >            
+        <input type="hidden" [(ngModel)]="this.dataApi.selectedDocente.id" name="id" > 
+      <mat-card class="card">
+          <mat-grid-list cols="2" rowHeight="2:1">
+              <mat-grid-tile>
+                  <mat-form-field> 
+                      <mat-icon matPrefix>
+                          <br> table_chart &nbsp;
+                      </mat-icon>
+                     <input matInput [(ngModel)]="this.dataApi.selectedDocente.noInss" name="noInss"  placeholder = "No. Inss" type="text" required >      
+                  </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field> 
+                      <mat-icon matPrefix>
+                         <br> text_fields &nbsp;
+                     </mat-icon>
+                     <input matInput [(ngModel)]="this.dataApi.selectedDocente.nombres" name="nombres"  placeholder = "Nombres" type="text" required > 
+                   </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field> 
+                      <mat-icon matPrefix>
+                          <br> text_fields &nbsp;
+                      </mat-icon>
+                      <input matInput [(ngModel)]="this.dataApi.selectedDocente.apellidos" name="apellidos"  placeholder = "Apellidos" type="text" required > 
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field>
+                    <mat-label>Tipo de Contrato</mat-label>
+                    <mat-select matNativeControl required [(value)]="selected" [(ngModel)]="this.dataApi.selectedDocente.contrato" name="contrato">
+                        <mat-option value="Indeterminado">Indeterminado</mat-option>
+                        <mat-option value="Servicio">Servicio</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                   
+                     <!-- <select required   name="contrato">
+                        <option value="Indeterminado">Indeterminado</option>
+                        <option value="Servicio">Servicio</option>
+                      </select>-->
+                   
+                  <!--<mat-form-field> 
+                      <mat-icon matPrefix>
+                          <br> text_fields &nbsp;
+                      </mat-icon>
+                      <input matInput [(ngModel)]="this.dataApi.selectedDocente.contrato" name="contrato"  placeholder = "Contrato" type="text" required > 
+                    </mat-form-field>-->
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field> 
+                      <mat-icon matPrefix>
+                          <br> local_phone &nbsp;
+                      </mat-icon>
+                      <input matInput [(ngModel)]="this.dataApi.selectedDocente.telefono" name="telefono"  placeholder = "Teléfono" type="text" required > 
+                    </mat-form-field >
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field> 
+                      <mat-icon matPrefix>
+                        <br> contacts &nbsp;
+                      </mat-icon>
+                      <input type="email" matInput   id="username" name="username"  placeholder = "Correo" [(ngModel)]="username" required > 
+                    </mat-form-field>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <mat-form-field> 
+                      <mat-icon matPrefix>
+                        <br> ballot &nbsp;
+                      </mat-icon>
+                      <input type="password"  matInput   id="userpass" name="userpass"  placeholder = "Contraseña" [(ngModel)]="userpass"   required > 
+                    </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+            <div class="div1">
+                <button class="buttom" mat-raised-button color="primary" routerLink="../docente">Guardar</button>
+                &nbsp; &nbsp; &nbsp; &nbsp; 
+                <button (click)="resetForm()" mat-raised-button color="primary" mat-button  mat-dialog-close > Cancelar </button > 
+            </div>
+    
+          
+    
+          
+    
+          
+    
+          
+      </mat-card>
     </form>
-  </mat-card>
-</div>

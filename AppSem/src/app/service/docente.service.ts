@@ -23,6 +23,7 @@ export class DocenteService {
   }
   
   getAlldocentes() {
+    //this.docenteCollection = this.afs.collection<docenteInterface>('docente', ref => ref.where('noInss','==','3144'));
     this.docenteCollection = this.afs.collection<docenteInterface>('docente');
     return this.docentes = this.docenteCollection.snapshotChanges()
       .pipe(map(changes => {

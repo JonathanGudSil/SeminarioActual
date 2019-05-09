@@ -9,7 +9,8 @@ import { DocenteComponent } from './components/docente/docente.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { ModuloComponent } from './components/modulo/modulo.component';
 import { AgregarCarreraComponent } from './components/carrera/agregar-carrera/agregar-carrera.component';
-import { RegistrarseComponent } from './components/login/registrarse/registrarse.component';
+import { RegistrarseComponent } from './components/registrarse/registrarse.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 const routes: Routes = [
   { path: '', component : LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'grupo', component : GrupoComponent},
   { path: 'modulo', component : ModuloComponent},
   { path: 'agregar-carrera', component : AgregarCarreraComponent},
+  { path: 'reporte', component: ReporteComponent},
   { path: '**', component : InicioComponent },
 ];
 

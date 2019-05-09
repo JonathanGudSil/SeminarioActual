@@ -21,18 +21,32 @@ export class DocenteComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor(public dialog: MatDialog, private dataDocente: DocenteService) { }
+  constructor(public dialog: MatDialog, private dataDocente: DocenteService) {
+    
 
+   }
+
+   
+  public isadmin: boolean=false;
   private docentes: docenteInterface[];
 
   openDialog() {
-    const dialogRef = this.dialog.open(AgregarDocenteComponent);
+    const dialogRef = this.dialog.open(AgregarDocenteComponent,{
+      width: '600px'
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
   ngOnInit() {
+    if (localStorage.getItem('rol') == 'docente')
+    {
+      this.isadmin = false;
+    }else{
+      this.isadmin = true;
+    }
+    console.log("rol",localStorage.getItem('rol'));
     this.getListDocentes();
   }
 
@@ -45,8 +59,8 @@ export class DocenteComponent implements OnInit {
 
    onDeleteDocente(id: string): void {
       Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: '¿Estás seguro?',
+        text: "No podras revertir la operación!",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -65,7 +79,9 @@ export class DocenteComponent implements OnInit {
   }
 
   onPreUpdateDocente(docente: docenteInterface) {
-    const dialogRef = this.dialog.open(AgregarDocenteComponent);
+    const dialogRef = this.dialog.open(AgregarDocenteComponent,{
+      width: '600px'
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

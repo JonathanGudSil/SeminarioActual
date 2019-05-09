@@ -1,34 +1,6 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="!(isHandset$ | async)">
-      <img src="./../../assets/imagen/logo-inatec.png" class="image1">
-    <mat-toolbar class="toolbar">Menu
-    </mat-toolbar>
-    <img src="./../../assets/imagen/logo_gobierno.png" class="image1">
-
-    
-
-    <mat-nav-list>
-      <hr />
-      <a mat-list-item routerLink= "/inicio">Inicio</a>
-      <hr />
-      <a mat-list-item routerLink= "/asistencia">Asistencia</a>
-      <hr />
-      <a mat-list-item routerLink= "/carrera">Carrera</a>
-      <hr />
-      <a mat-list-item routerLink= "/contrato">Contrato</a>
-      <hr />
-      <a mat-list-item routerLink= "/docente">Docente</a>
-      <hr />
-      <a mat-list-item routerLink= "/grupo">Grupo</a>
-      <hr /> <br> 
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
+<ng-container >
+    <mat-toolbar class="example-header" color="primary">
+        <button
         type="button"
         aria-label="Toggle sidenav"
         mat-icon-button
@@ -37,10 +9,67 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span class="spanclass"></span>
-      <a mat-list-item routerLink="/login"><mat-icon class="iconclass" matTooltip="Iniciar Sesión">account_circle</mat-icon>
+      <a mat-list-item routerLink="/login" *ngIf="isLogged == false;" style="color:white;"><mat-icon class="iconclass" matTooltip="Iniciar Sesión">account_circle</mat-icon>
       </a>
+    
+      <a href="" *ngIf="isLogged == true;" (click)="logoutUser()" style="color:white;"><mat-icon>exit_to_app</mat-icon></a>
     </mat-toolbar>
-    <!-- Add Content Here -->
-    <ng-content></ng-content> 
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
+        <img src="./../../assets/imagen/logo-inatec.png" class="image1">
+           
+        <img src="./../../assets/imagen/logo_gobierno.png" class="image1">
+        
+        
+        LOGGED: {{isLogged}}
+        <mat-nav-list *ngIf="isLogged == true;">
+          <hr />
+          <a mat-list-item routerLink= "/inicio" style="font-weight: bold;"><mat-icon>dashboard</mat-icon> INICIO</a>
+          <hr />
+          <a mat-list-item  routerLink= "/asistencia" style="font-weight: bold;"><mat-icon>list_alt</mat-icon> Asistencia</a>
+          <hr />
+          <a mat-list-item *ngIf="isadmin == true;" routerLink= "/carrera" style="font-weight: bold;"><mat-icon>format_list_bulleted  </mat-icon> Carrera</a>
+          <hr *ngIf="isadmin == true;"/>
+          <a mat-list-item *ngIf="isadmin == true;" routerLink= "/contrato" style="font-weight: bold;"><mat-icon>featured_play_list</mat-icon> Contrato</a>
+          <hr *ngIf="isadmin == true;"/>
+          <a mat-list-item *ngIf="isadmin == true;" routerLink= "/docente" style="font-weight: bold;"><mat-icon>face</mat-icon> Docente</a>
+          <hr *ngIf="isadmin == true;"/>
+          <!--<a mat-list-item  *ngIf="isadmin == true;" routerLink= "/registrarse" style="font-weight: bold;" ><mat-icon>supervisor_account</mat-icon> Usuario</a>
+          <hr *ngIf="isadmin == true;"/> -->
+          <a mat-list-item  *ngIf="isadmin == true;" routerLink= "/grupo" style="font-weight: bold;" ><mat-icon>featured_play_list</mat-icon> Grupo</a>
+          <hr *ngIf="isadmin == true;"/> 
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content [formGroup]="options">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="example-footer">
+      <footer style="margin: 0 auto;">
+          <h2 style="color:white;"> Todos los derechos reservados Tecnológico Nacional &copy; 2019</h2>
+         
+          <!--<div class="icon">
+            <a class="a" href="https://www.facebook.com/TecNacional"><img class="imgicon" src="./../../assets/imagen/facebook.png"></a>
+            <a class="a" href="https://www.youtube.com/user/TecnologicoNacional"><img class="imgicon" src="./../../assets/imagen/youtube.png"></a>
+            <a class="a" href="https://web.whatsapp.com/"><img class="imgicon" src="./../../assets/imagen/wpp.png"></a>
+            <a class="a" href="https://www.instagram.com/tecnacional/?hl=es"><img class="imgicon" src="./../../assets/imagen/instagram.png"></a>
+          </div>-->
+            <!--<div>
+              Dirección: De Gasolinera UNO Petrol 100Vrs. 
+              al Oeste, Juigalpa, Chontales.<br>
+    Tel.: 2512-1481 / 2512-2627 <br>
+    
+         Correo Electrónico: info.centros@inatec.edu.ni
+            </div>-->
+          </footer>
+  </mat-toolbar> 
+  </ng-container>
+
+
+
+
+
+

@@ -1,39 +1,51 @@
-<div>
-  <mat-card class="card">
 
-    <div>
-      <img src="./../../assets/imagen/logo-inatec.png" class="image">
+    <div style="text-align: center">
       <h2 class="center"> Agregar una Asistencia </h2>
     </div>
 
-    <form class="example-form">            
-      <mat-form-field  class = "example-full-width" > 
-        <mat-icon matPrefix>
-          <br> contacts &nbsp;
-        </mat-icon>
-          <input matInput  placeholder = "Total Varones" type="text" required > 
-    </mat-form-field >
-
-    <mat-form-field  class = "example-full-width" > 
-      <mat-icon matPrefix>
-        <br> contacts &nbsp;
-      </mat-icon>
-      <input matInput  placeholder = "Total Mujeres" type="text" required > 
-    </mat-form-field >
-
-    <mat-form-field  class = "example-full-width" > 
-      <mat-icon matPrefix>
-        <br> ballot &nbsp;
-      </mat-icon>
-      <input matInput  placeholder = "Observaciones" type="text" required > 
-    </mat-form-field >
-
-    <div class="div1">
-        <button class="buttom" mat-raised-button color="primary" routerLink="../carrera">Agregar</button>
-        &nbsp; &nbsp; &nbsp; &nbsp; 
-        <button mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
-    </div>
-
-    </form>
+    <form class="example-form" id="formGrupo" name="formGrupo" #formGrupo="ngForm" (ngSubmit)="onGuardarAsistencia(formGrupo)">            
+      <mat-card class="card">
+      <input type="hidden" [(ngModel)]="this.dataApi.selectedGrupo.id" name="id" > 
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field  class = "example-full-width" > 
+            <mat-icon matPrefix>
+              <br> contacts &nbsp;
+            </mat-icon>
+            <input matInput type="text" [(ngModel)]="this.dataApi.selectedGrupo.modulo" placeholder="Módulo" name="modulo" readonly >
+          </mat-form-field >
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field  class = "example-full-width" > 
+            <mat-icon matPrefix>
+              <br> contacts &nbsp;
+            </mat-icon>
+            <input matInput type="number" [(ngModel)]="this.dataApi.selectedGrupo.mujeres" placeholder="Mujeres" name="mujeres" >
+          </mat-form-field >
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field  class = "example-full-width" > 
+            <mat-icon matPrefix>
+              <br> contacts &nbsp;
+            </mat-icon>
+            <input matInput type="number" [(ngModel)]="this.dataApi.selectedGrupo.varones" placeholder="Varones" name="varones" >
+          </mat-form-field >
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field  > 
+            <mat-icon matPrefix>
+              <br> ballot &nbsp;
+            </mat-icon>
+            <input matInput type="text" [(ngModel)]="this.dataApi.selectedGrupo.observaciones" placeholder="Observaciones" name="observaciones">
+          </mat-form-field >
+        </mat-grid-tile>
+      </mat-grid-list>
+      
+      <div class="div1">
+          <button type="submit" class="buttom" mat-raised-button color="primary" >Guardar</button>
+          &nbsp; &nbsp; &nbsp; &nbsp; 
+          <button mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
+      </div>
   </mat-card>
-</div>
+</form>
+ 

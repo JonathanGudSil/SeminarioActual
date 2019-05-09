@@ -1,0 +1,55 @@
+<div>
+  <mat-card class="card">
+
+    <div>
+      <img src="./../../assets/imagen/logo-inatec.png" class="image">
+      <h2 class="center"> Registrar Docente </h2>
+    </div>
+
+    <form class="example-form" name="formRegistrarse"  (ngSubmit)="onAddUser()" >            
+      <!--<mat-form-field  class = "example-full-width" > 
+        <mat-icon matPrefix>
+          <br> contacts &nbsp;
+        </mat-icon>
+          <input matInput  placeholder = "Nombres" type="text" required > 
+    </mat-form-field >
+
+    <mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> contacts &nbsp;
+      </mat-icon>
+      <input matInput  placeholder = "Apellidos" type="text" required > 
+    </mat-form-field >-->
+
+    <mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> contacts &nbsp;
+      </mat-icon>
+      <input type="email" matInput   id="email" name="email"  placeholder = "Correo" [(ngModel)]="email" required > 
+    </mat-form-field >
+
+   <!--<mat-form-field  class = "example-full-width" > 
+      <mat-icon matPrefix>
+        <br> ballot &nbsp;
+      </mat-icon>
+      <input matInput  placeholder = "Usuario" type="text" required > 
+    </mat-form-field >--> 
+
+    <mat-form-field  class = "example-full-width" > 
+        <mat-icon matPrefix>
+          <br> ballot &nbsp;
+        </mat-icon>
+        <input type="password"  matInput   id="password" name="password"  placeholder = "Contraseña" [(ngModel)]="password"   required > 
+      </mat-form-field >
+  
+
+
+    <div class="div1">
+      <button type="submit" class="buttom" mat-raised-button color="primary">Registrarse</button>
+        &nbsp; &nbsp; &nbsp; &nbsp; 
+      
+    </div>
+
+    </form>
+  </mat-card>
+</div>

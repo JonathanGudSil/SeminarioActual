@@ -1,54 +1,82 @@
-<div>
-  <mat-card class="card">
 
-    <div>
-      <img src="./../../assets/imagen/logo-inatec.png" class="image">
+    <div style="text-align: center">
+
       <h2 class="center"> Agregar un Grupo </h2>
     </div>
 
-    <form class="example-form">            
-      
-      <mat-form-field  class = "example-full-width" > 
-          <mat-icon matPrefix>
-              <br> developer_board &nbsp;
-          </mat-icon>
-          <input matInput  placeholder = "Módulo" type="text" required > 
-      </mat-form-field >
+    <form id="formGrupo" name="formGrupo" #formGrupo="ngForm" (ngSubmit)="onGuardarGrupo(formGrupo)">      
+            <input type="hidden" [(ngModel)]="this.dataApi.selectedGrupo.id" name="id" > 
+            <input type="hidden" [(ngModel)]="this.dataApi.selectedGrupo.mujeres" name="mujeres" >
+                      <input type="hidden" [(ngModel)]="this.dataApi.selectedGrupo.varones" name="varones" >
+                      <input type="hidden" [(ngModel)]="this.dataApi.selectedGrupo.observaciones" name="observaciones">
+        <mat-card class="card">
+                <mat-grid-list cols="2" rowHeight="2:1">
+                        <mat-grid-tile>
+                            <mat-form-field  class = "example-full-width" > 
+                                <mat-icon matPrefix>
+                                    <br> developer_board &nbsp;
+                                </mat-icon>
+                                <input matInput [(ngModel)]="this.dataApi.selectedGrupo.modulo" name="modulo" placeholder = "Módulo" type="text" required > 
+                            </mat-form-field >
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <mat-form-field>
+                                <mat-label>Carrera</mat-label>
+                                <mat-select [(ngModel)]="this.dataApi.selectedGrupo.carrera_id" name="carrera_id">
+                                  <mat-option *ngFor="let items of carrera" [value]="items.id">
+                                    {{items.name}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <mat-form-field>
+                                <mat-label>Docente</mat-label>
+                                <mat-select [(ngModel)]="this.dataApi.selectedGrupo.docente_id" name="docente_id">
+                                  <mat-option *ngFor="let item of docentes" [value]="item.username">
+                                    {{item.nombres}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                                <mat-form-field>
+                                        <mat-label>Turno</mat-label>
+                                        <mat-select matNativeControl required [(value)]="selected" [(ngModel)]="this.dataApi.selectedGrupo.turno" name="turno">
+                                            <mat-option value="Matutino">Matutino</mat-option>
+                                            <mat-option value="Vespertino">Vespertino</mat-option>
+                                            <mat-option value="Nocturno">Nocturno</mat-option>
+                                            <mat-option value="Sabatinoo">Sabatino</mat-option>
+                                            <mat-option value="Dominical">Dominical</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <mat-form-field  class = "example-full-width" > 
+                                <mat-icon matPrefix>
+                                    <br> insert_invitation &nbsp;
+                                </mat-icon>
+                                <input type="datetime" matInput [(ngModel)]="this.dataApi.selectedGrupo.fecha_inicio" name="fecha_inicio" placeholder = "Fecha de Inicio" type="text" required > 
+                            </mat-form-field >
+                         
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <mat-form-field  class = "example-full-width" > 
+                                <mat-icon matPrefix>
+                                    <br> insert_invitation &nbsp;
+                                </mat-icon>
+                              <input type="datetime-local" matInput [(ngModel)]="this.dataApi.selectedGrupo.fecha_fin" name="fecha_fin" placeholder = "Fecha de Fin de Curso" type="text" required > 
+                            </mat-form-field >
+                        </mat-grid-tile>
+                      </mat-grid-list>
+                      
+                      <div class="div1">
+                            <button class="buttom" mat-raised-button color="primary" routerLink="../grupo">Guardar</button>
+                            &nbsp; &nbsp; &nbsp; &nbsp; 
+                            <button (click)="resetForm()" mat-raised-button color="primary" mat-button  mat-dialog-close > Cancelar </button > 
+                        </div>
+        </mat-card>      
+        
     
-      <mat-form-field  class = "example-full-width" > 
-          <mat-icon matPrefix>
-              <br> layers_clear &nbsp;
-          </mat-icon>
-          <input matInput  placeholder = "Carrera" type="text" required > 
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-          <mat-icon matPrefix>
-              <br> event_available &nbsp;
-          </mat-icon>
-          <input matInput  placeholder = "Turno" type="text" required > 
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-          <mat-icon matPrefix>
-              <br> insert_invitation &nbsp;
-          </mat-icon>
-          <input matInput  placeholder = "Fecha de Inicio" type="text" required > 
-      </mat-form-field >
-
-      <mat-form-field  class = "example-full-width" > 
-          <mat-icon matPrefix>
-              <br> insert_invitation &nbsp;
-          </mat-icon>
-        <input matInput  placeholder = "Fecha de Fin de Curso" type="text" required > 
-      </mat-form-field >
-
-    <div class="div1">
-        <button class="buttom" mat-raised-button color="primary" routerLink="../grupo">Agregar</button>
-        &nbsp; &nbsp; &nbsp; &nbsp; 
-        <button mat-raised-button color="primary"  mat-button  mat-dialog-close > Cancelar </button > 
-    </div>
 
     </form>
-  </mat-card>
-</div>

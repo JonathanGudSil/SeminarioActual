@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  private correo: string = '';
+  constructor() { 
+    this.correo = localStorage.getItem('correo');
+
+  }
 
   ngOnInit() {
   }

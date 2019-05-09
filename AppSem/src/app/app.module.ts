@@ -27,13 +27,16 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AgregarAsistenciaComponent } from './components/asistencia/agregar-asistencia/agregar-asistencia.component';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFireModule} from '@angular/fire';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { AgregarDocenteComponent } from './components/docente/agregar-docente/agregar-docente.component';
 import { AgregarGrupoComponent } from './components/grupo/agregar-grupo/agregar-grupo.component';
 import { AgregarContratoComponent } from './components/contrato/agregar-contrato/agregar-contrato.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { RegistrarseComponent } from './components/login/registrarse/registrarse.component';
+import { RegistrarseComponent } from './components/registrarse/registrarse.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,7 @@ import {MatSelectModule} from '@angular/material/select';
     AgregarGrupoComponent,
     AgregarContratoComponent,
     RegistrarseComponent,
+    ReporteComponent,
     
   ],
   imports: [
@@ -76,9 +80,11 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     AngularFirestoreModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
+    MatDatepickerModule
   ],
-  providers: [],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent],
   entryComponents: [
     AgregarCarreraComponent,

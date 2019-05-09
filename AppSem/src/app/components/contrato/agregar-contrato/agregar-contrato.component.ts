@@ -21,14 +21,14 @@ export class AgregarContratoComponent implements OnInit {
       this.dataApi.addContrato(formContrato.value);
       Swal.fire(
         'Registrado!',
-        'You clicked the button!',
+        '¡El registro se ha guardado con exito!',
         'success'
       )
     } else {
       this.dataApi.updateContrato(formContrato.value);
       Swal.fire(
         'Actualizado!',
-        'You clicked the button!',
+        '¡El registro se ha actualizado con exito!',
         'success'
       )
     }

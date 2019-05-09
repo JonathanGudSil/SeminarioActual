@@ -1,16 +1,17 @@
 <div>
-  <mat-card class="card">
+  <mat-card class="card" style="height: 80%;">
 
     <div>
       <img src="./../../assets/imagen/logo-inatec.png" class="image">
     </div>
 
-    <form class="example-form">            
+    <form class="example-form" #formLogin="ngForm" (submit)="onLogin()"> 
+          
       <mat-form-field  class = "example-full-width" > 
         <mat-icon matPrefix>
             <br> account_circle &nbsp;
         </mat-icon>
-          <input matInput  placeholder = "Usuario" type="text" required > 
+          <input [(ngModel)]="email" matInput   type="email" id="email" name="email" placeholder="E-mail" required > 
         
     </mat-form-field >
 
@@ -18,12 +19,19 @@
         <mat-icon matPrefix>
             https &nbsp;
           </mat-icon>
-      <input  matInput  placeholder = "Contraseña" type="password" required > 
+      <input [(ngModel)]="password"  matInput  placeholder = "Contraseña" type="password" id="password" name="password" required > 
+      
     </mat-form-field >
+
     <div class="div1">
-        <button class="buttom" mat-raised-button color="primary" routerLink="/inicio">Acceder</button>
+        <button mat-raised-button color="primary" type="submit" style="text-align: center">Acceder</button>
+        <!--<a href="#" class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()">
+            <span class="fa fa-google"></span>
+            Google
+          </a>-->
+        <!--<button class="buttom" mat-raised-button color="primary" type="submit">Acceder</button>
         &nbsp; &nbsp; &nbsp; &nbsp; 
-        <button class="buttom" mat-raised-button color="primary" (click)="openDialog()">Registrarse</button>
+        <button class="buttom" mat-raised-button color="primary" (click)="openDialog()">Registrarse</button>-->
     </div>
 
     </form>
