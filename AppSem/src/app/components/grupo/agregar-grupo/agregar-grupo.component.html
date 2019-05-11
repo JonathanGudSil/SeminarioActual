@@ -69,7 +69,11 @@
                             </mat-form-field >
                         </mat-grid-tile>
                       </mat-grid-list>
-                      
+                      <mat-form-field>
+                        <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
                       <div class="div1">
                             <button class="buttom" mat-raised-button color="primary" routerLink="../grupo">Guardar</button>
                             &nbsp; &nbsp; &nbsp; &nbsp; 

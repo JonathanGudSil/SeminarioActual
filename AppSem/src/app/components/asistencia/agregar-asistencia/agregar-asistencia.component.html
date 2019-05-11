@@ -8,12 +8,14 @@
       <input type="hidden" [(ngModel)]="this.dataApi.selectedGrupo.id" name="id" > 
       <mat-grid-list cols="2" rowHeight="2:1">
         <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field  class = "example-full-width" > 
-            <mat-icon matPrefix>
-              <br> contacts &nbsp;
-            </mat-icon>
-            <input matInput type="text" [(ngModel)]="this.dataApi.selectedGrupo.modulo" placeholder="Módulo" name="modulo" readonly >
-          </mat-form-field >
+            <mat-form-field>
+                <mat-label>Módulo</mat-label>
+                <mat-select [(ngModel)]="this.dataApi.selectedGrupo.modulo" name="modulo">
+                  <mat-option *ngFor="let item of grupo" [value]="item.modulo">
+                    {{item.modulo}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-form-field  class = "example-full-width" > 
@@ -31,7 +33,16 @@
             <input matInput type="number" [(ngModel)]="this.dataApi.selectedGrupo.varones" placeholder="Varones" name="varones" >
           </mat-form-field >
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile> 
+            <mat-form-field  class = "example-full-width" > 
+                <mat-icon matPrefix>
+                    <br> insert_invitation &nbsp;
+                </mat-icon>
+                <input type="datetime" matInput [(ngModel)]="this.dataApi.selectedGrupo.fecha_inicio" name="fecha_inicio" placeholder = "Fecha" type="text" required > 
+            </mat-form-field >
+         
+        </mat-grid-tile>
+        <mat-grid-tile>
           <mat-form-field  > 
             <mat-icon matPrefix>
               <br> ballot &nbsp;

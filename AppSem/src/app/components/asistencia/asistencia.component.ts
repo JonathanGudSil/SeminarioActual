@@ -5,7 +5,7 @@ import { AgregarAsistenciaComponent } from '../asistencia/agregar-asistencia/agr
 import { GrupoService } from '../../service/grupo.service';
 import {grupoInterface} from '../../models/grupo.modal';
 import { AgregarGrupoComponent } from '../grupo/agregar-grupo/agregar-grupo.component';
-
+import {AsistenciaService} from '../../service/asistencia.service';
 @Component({
   selector: 'app-asistencia',
   templateUrl: './asistencia.component.html',
@@ -19,19 +19,21 @@ export class AsistenciaComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  constructor(public dialog: MatDialog,public dataGrupo: GrupoService) {
+  constructor(public dialog: MatDialog,public dataGrupo: GrupoService, public dataAsistencia:AsistenciaService) {
     
    }
   public isadmin: boolean=false;
   openDialog() {
-    const dialogRef = this.dialog.open(AgregarAsistenciaComponent);
+    const dialogRef = this.dialog.open(AgregarAsistenciaComponent,{
+      width: '600px'
+    });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
   getListGrupo(){
-    this.dataGrupo.getAllGrupoDocente(localStorage.getItem('mail')).subscribe(
+    this.dataAsistencia.getAllAsistenciaDocente(localStorage.getItem('mail')).subscribe(
       grupo => {
         this.dataSource.data = grupo;
       }
@@ -42,7 +44,7 @@ export class AsistenciaComponent implements OnInit {
     if (localStorage.getItem('rol') == 'docente')
     {
       this.isadmin = false;
-      this.displayedColumns =  ['modulo', 'mujeres', 'varones', 'total', 'observacion','symbol'];
+      this.displayedColumns =  ['modulo','fecha', 'mujeres', 'varones', 'total', 'observacion','symbol'];
     }else{
       this.isadmin = true;
       this.displayedColumns = ['modulo', 'mujeres', 'varones', 'total', 'observacion'];
@@ -59,7 +61,7 @@ export class AsistenciaComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
     
-    this.dataGrupo.selectedGrupo = Object.assign({}, grupo);
+    this.dataAsistencia.selectedGrupo = Object.assign({}, grupo);
     console.log("Grupo",this.dataGrupo.selectedGrupo.modulo);
   }
 

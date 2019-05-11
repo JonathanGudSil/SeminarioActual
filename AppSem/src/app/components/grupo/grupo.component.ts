@@ -6,6 +6,7 @@ import { GrupoService } from '../../service/grupo.service';
 import {grupoInterface} from '../../models/grupo.modal';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-grupo',
   templateUrl: './grupo.component.html',

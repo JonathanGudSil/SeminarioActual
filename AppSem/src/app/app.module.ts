@@ -38,6 +38,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReporteComponent } from './components/reporte/reporte.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,9 +56,8 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     AgregarDocenteComponent,
     AgregarGrupoComponent,
     AgregarContratoComponent,
-    RegistrarseComponent,
+    RegistrarseComponent, 
     ReporteComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -102,3 +102,4 @@ import { ReporteComponent } from './components/reporte/reporte.component';
 })
 
 export class AppModule { }
+
