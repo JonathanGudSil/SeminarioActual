@@ -5,7 +5,7 @@ import { AgregarGrupoComponent } from '../grupo/agregar-grupo/agregar-grupo.comp
 import { GrupoService } from '../../service/grupo.service';
 import {grupoInterface} from '../../models/grupo.modal';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-grupo',
@@ -50,6 +50,39 @@ export class GrupoComponent implements OnInit {
 
   ngOnInit() {
     this.getListGrupo();
+  }
+
+  onPreUpdateGrupo(grupo: grupoInterface){
+    const dialogRef = this.dialog.open(AgregarGrupoComponent,{
+      width: '600px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    
+    this.dataGrupo.selectedGrupo = Object.assign({}, grupo);
+  }
+
+  onDeleteGrupo(id: string): void {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podras revertir la operación!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Entiendo!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        this.dataGrupo.deleteGrupo(id);
+        Swal.fire(
+          'Eliminado!',
+          'El registro ha sido eliminado con exito.',
+          'success'
+        )
+      }
+    })
   }
 
 }

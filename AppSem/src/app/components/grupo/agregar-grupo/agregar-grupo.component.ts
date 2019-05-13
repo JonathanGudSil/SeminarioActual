@@ -7,6 +7,7 @@ import { GrupoService } from '../../../service/grupo.service';
 import { carreraInterface } from '../../../models/carrera.modal';
 import { CarreraService } from 'src/app/service/carrera.service';
 import { NgForm, FormsModule} from '@angular/forms';
+import {MatDialog} from '@angular/material';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -19,7 +20,7 @@ export class AgregarGrupoComponent implements OnInit {
   public docentes: docenteInterface[];
   public carrera:  carreraInterface[];
 
-  constructor(public afs: AngularFirestore, public dataApi:GrupoService, private dataDocente: DocenteService, private dataCarrera: CarreraService) {
+  constructor(public dialog:MatDialog,public afs: AngularFirestore, public dataApi:GrupoService, private dataDocente: DocenteService, private dataCarrera: CarreraService) {
     this.dataDocente.getAlldocentes().subscribe(docente => {
       this.docentes = docente
     });
@@ -33,20 +34,32 @@ export class AgregarGrupoComponent implements OnInit {
    onGuardarGrupo(formGrupo: NgForm): void{
      if (formGrupo.valid){
        if (formGrupo.value.id == null) {
-         console.log(formGrupo.value);
         this.dataApi.addGrupo(formGrupo.value);
-        formGrupo.resetForm();
-        Swal.fire(
-          'Operación Exitosa',
-          '¡El grupo ha sido registrado!',
-          'success'
-        );
+        
+       }else{
+        this.dataApi.updateGrupo(formGrupo.value);
+        
        }
+       Swal.fire(
+        'Operación Exitosa!',
+        'Sus datos han sido actualizados!',
+        'success'
+      )
+      formGrupo.resetForm();
+      this.dialog.closeAll();
      }
     
   }
 
+ 
+
   ngOnInit() {
   }
-
+  
+resetForm(formDocente?:NgForm)  
+{
+    if (formDocente != null)
+    formDocente.resetForm();
+   
+}
 }

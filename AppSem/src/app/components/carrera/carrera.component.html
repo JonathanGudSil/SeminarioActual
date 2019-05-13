@@ -3,11 +3,8 @@
     <h2 class="center"> Carreras Registradas</h2>
 
     
-
+    <button mat-raised-button class="buttom" (click)="openDialog()">Agregar Nueva Carrera</button>
     <mat-form-field class="example-form">
-
-        <button mat-raised-button class="buttom" (click)="openDialog()">Agregar Nueva Carrera</button>
-        &nbsp; &nbsp; &nbsp; &nbsp; 
         <input class="buscar" matInput (keyup)="applyFilter($event.target.value)" placeholder="Busqueda Rápida">
       </mat-form-field>
       

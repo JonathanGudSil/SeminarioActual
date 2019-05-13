@@ -23,7 +23,7 @@
                             <mat-form-field>
                                 <mat-label>Carrera</mat-label>
                                 <mat-select [(ngModel)]="this.dataApi.selectedGrupo.carrera_id" name="carrera_id">
-                                  <mat-option *ngFor="let items of carrera" [value]="items.id">
+                                  <mat-option *ngFor="let items of carrera" [value]="items.name">
                                     {{items.name}}
                                   </mat-option>
                                 </mat-select>
@@ -42,7 +42,7 @@
                         <mat-grid-tile>
                                 <mat-form-field>
                                         <mat-label>Turno</mat-label>
-                                        <mat-select matNativeControl required [(value)]="selected" [(ngModel)]="this.dataApi.selectedGrupo.turno" name="turno">
+                                        <mat-select matNativeControl required  [(ngModel)]="this.dataApi.selectedGrupo.turno" name="turno">
                                             <mat-option value="Matutino">Matutino</mat-option>
                                             <mat-option value="Vespertino">Vespertino</mat-option>
                                             <mat-option value="Nocturno">Nocturno</mat-option>
@@ -56,7 +56,10 @@
                                 <mat-icon matPrefix>
                                     <br> insert_invitation &nbsp;
                                 </mat-icon>
-                                <input type="datetime" matInput [(ngModel)]="this.dataApi.selectedGrupo.fecha_inicio" name="fecha_inicio" placeholder = "Fecha de Inicio" type="text" required > 
+                                <input matInput [matDatepicker]="picker1" [(ngModel)]="this.dataApi.selectedGrupo.fecha_inicio" name="fecha_inicio" placeholder = "Fecha de Inicio" readonly required>
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+
                             </mat-form-field >
                          
                         </mat-grid-tile>
@@ -65,19 +68,17 @@
                                 <mat-icon matPrefix>
                                     <br> insert_invitation &nbsp;
                                 </mat-icon>
-                              <input type="datetime-local" matInput [(ngModel)]="this.dataApi.selectedGrupo.fecha_fin" name="fecha_fin" placeholder = "Fecha de Fin de Curso" type="text" required > 
+                                <input matInput [matDatepicker]="picker" [(ngModel)]="this.dataApi.selectedGrupo.fecha_fin" name="fecha_fin" placeholder = "Fecha de Fin de Curso" readonly required>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field >
                         </mat-grid-tile>
                       </mat-grid-list>
-                      <mat-form-field>
-                        <input formControlName="hireDate" matInput [matDatepicker]="picker" placeholder="Hire Date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                      <div class="div1">
+                     
+                      <div class="div1" style="text-align: center;">
                             <button class="buttom" mat-raised-button color="primary" routerLink="../grupo">Guardar</button>
                             &nbsp; &nbsp; &nbsp; &nbsp; 
-                            <button (click)="resetForm()" mat-raised-button color="primary" mat-button  mat-dialog-close > Cancelar </button > 
+                            <button  mat-raised-button color="primary" mat-button  mat-dialog-close > Cancelar </button > 
                         </div>
         </mat-card>      
         

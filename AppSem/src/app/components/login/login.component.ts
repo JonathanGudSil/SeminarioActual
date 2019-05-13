@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material';
 import { docenteInterface } from '../../models/docente.modal';
-import { RegistraseService} from './../../service/registrase.service';
-import { registrarseInterface } from './../../models/registrarse.modal';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import Swal from 'sweetalert2';
@@ -18,13 +16,10 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 
 export class LoginComponent implements OnInit {
   displayedColumns: string[] = ['nombres', 'apellidos', 'correo', 'usuario','contraseña'];
-  dataSource = new MatTableDataSource<registrarseInterface>();
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  
 
-  constructor(public dialog: MatDialog,public afs: AngularFirestore, private dataRegistrarse: RegistraseService, private afsAuth: AngularFireAuth, private router: Router, private AuthService: AuthServiceService) {
+  constructor(public dialog: MatDialog,public afs: AngularFirestore,  private afsAuth: AngularFireAuth, private router: Router, private AuthService: AuthServiceService) {
     
     if (localStorage.getItem('rol') != null && localStorage.getItem('rol') != ''){
       this.router.navigate(['/inicio']);
@@ -32,7 +27,6 @@ export class LoginComponent implements OnInit {
    }
   public email: string = '';
   public password: string = '';
-  private registrarses: registrarseInterface[];
   public docenteCollection: AngularFirestoreCollection<docenteInterface>;
 /*registerUser(email: string, pass: string){
   this.afsAuth.auth.createUserWithEmailAndPassword
@@ -81,12 +75,7 @@ onLogout(){
   ngOnInit() {
   }
 
-  getListRegistrarse() {
-    this.dataRegistrarse.getAllregistrarse()
-      .subscribe(registrarse => {
-        this.dataSource.data = registrarse;
-      });
-  }
+
 
    onDeleteRegistrarse(id: string): void {
       Swal.fire({
@@ -98,24 +87,9 @@ onLogout(){
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
-        if (result.value) {
-          this.dataRegistrarse.deleteRegistrarse(id);
-          Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-          )
-        }
+       
       })
   }
 
-  onPreUpdateRegistrarse(registrarse: registrarseInterface) {
-    /*const dialogRef = this.dialog.open(RegistrarseComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-    
-    this.dataRegistrarse.selectedRegistrarse = Object.assign({}, registrarse);*/
-  }
 
 }

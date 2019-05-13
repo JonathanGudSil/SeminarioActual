@@ -12,7 +12,12 @@
       <a mat-list-item routerLink="/login" *ngIf="isLogged == false;" style="color:white;"><mat-icon class="iconclass" matTooltip="Iniciar Sesión">account_circle</mat-icon>
       </a>
     
-      <a href="" *ngIf="isLogged == true;" (click)="logoutUser()" style="color:white;"><mat-icon>exit_to_app</mat-icon></a>
+      <!--<a href="" *ngIf="isLogged == true;" (click)="logoutUser()" style="color:white;"><mat-icon>exit_to_app</mat-icon></a>-->
+      <button *ngIf="isLogged == true;" mat-button [matMenuTriggerFor]="menu">{{ usuario }}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item><mat-icon>face</mat-icon>Cambiar Contraseña</button>
+        <button mat-menu-item (click)="logoutUser()"><mat-icon>exit_to_app</mat-icon>Cerrar Sesión</button>
+      </mat-menu>
     </mat-toolbar>
 
   <mat-sidenav-container class="example-container">
@@ -31,20 +36,20 @@
           <hr />
           <a mat-list-item *ngIf="isadmin == true;" routerLink= "/carrera" style="font-weight: bold;"><mat-icon>format_list_bulleted  </mat-icon> Carrera</a>
           <hr *ngIf="isadmin == true;"/>
-          <a mat-list-item *ngIf="isadmin == true;" routerLink= "/contrato" style="font-weight: bold;"><mat-icon>featured_play_list</mat-icon> Contrato</a>
-          <hr *ngIf="isadmin == true;"/>
+          <!--<a mat-list-item *ngIf="isadmin == true;" routerLink= "/contrato" style="font-weight: bold;"><mat-icon>featured_play_list</mat-icon> Contrato</a>
+          <hr *ngIf="isadmin == true;"/>-->
           <a mat-list-item *ngIf="isadmin == true;" routerLink= "/docente" style="font-weight: bold;"><mat-icon>face</mat-icon> Docente</a>
           <hr *ngIf="isadmin == true;"/>
           <!--<a mat-list-item  *ngIf="isadmin == true;" routerLink= "/registrarse" style="font-weight: bold;" ><mat-icon>supervisor_account</mat-icon> Usuario</a>
           <hr *ngIf="isadmin == true;"/> -->
           <a mat-list-item  *ngIf="isadmin == true;" routerLink= "/grupo" style="font-weight: bold;" ><mat-icon>featured_play_list</mat-icon> Grupo</a>
           <hr *ngIf="isadmin == true;"/> 
-          <a mat-list-item  *ngIf="isadmin == true;" routerLink= "/grupo" style="font-weight: bold;" ><mat-icon>featured_play_list</mat-icon> Reporte</a>
+          <a mat-list-item  *ngIf="isadmin == true;" routerLink= "/reporte" style="font-weight: bold;" ><mat-icon>featured_play_list</mat-icon> Reporte</a>
           <hr *ngIf="isadmin == true;"/> 
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content [formGroup]="options">
+    <mat-sidenav-content >
         <ng-content></ng-content>
     </mat-sidenav-content>
   </mat-sidenav-container>

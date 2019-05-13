@@ -51,9 +51,10 @@ import { Observable } from 'rxjs/internal/Observable';
             });
           }));
         }
+        
     addGrupo(grupo: grupoInterface): void {
-        //console.log(grupo);
-        this.grupoCollection.add(grupo);
+      var datos = JSON.parse(JSON.stringify(grupo));
+        this.grupoCollection.add(datos);
 
     }
 

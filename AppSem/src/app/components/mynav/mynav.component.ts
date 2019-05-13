@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth} from '@angular/fire/auth';
 import { AuthServiceService } from '../../service/auth-service.service';
-import { RegistrarseComponent } from '../registrarse/registrarse.component';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-mynav',
@@ -18,12 +17,13 @@ export class MynavComponent implements OnInit{
       map(result => result.matches)
     );
 public correo: string = '';
-
+public usuario: string;
   constructor(private router: Router,private breakpointObserver: BreakpointObserver,private AuthService: AuthServiceService, private afsAuth: AngularFireAuth) {
     if (localStorage.getItem('rol') == null || localStorage.getItem('rol') == ''){
       this.router.navigate(['/login']);
     }
-   
+    
+    this.usuario = localStorage.getItem('mail');
   }
       public app_name: string = "";
       public isLogged: boolean = false;
@@ -45,6 +45,7 @@ public correo: string = '';
           if (auth.email == "admin@gmail.com"){
             this.isadmin = true;
             localStorage.setItem("rol",'admin');
+            localStorage.setItem("mail","admin@gmail.com");
           }else{
             localStorage.setItem("rol",'docente');
             localStorage.setItem("mail",auth.email);
@@ -64,6 +65,8 @@ public correo: string = '';
     localStorage.removeItem('rol');
     localStorage.removeItem('mail');
     this.AuthService.logoutUser();
+    this.router.navigate(['/login']);
+    
   }
 
 }

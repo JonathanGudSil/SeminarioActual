@@ -1,0 +1,17 @@
+.image1{
+    top: 3px;
+    min-width: 150px;
+    max-width: 500px;  
+    text-align: center;
+    padding: 2%;
+    width: 320px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+  }
+  
+.center{
+    text-align: center;
+  }
+  

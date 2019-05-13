@@ -9,13 +9,11 @@ import { DocenteComponent } from './components/docente/docente.component';
 import { GrupoComponent } from './components/grupo/grupo.component';
 import { ModuloComponent } from './components/modulo/modulo.component';
 import { AgregarCarreraComponent } from './components/carrera/agregar-carrera/agregar-carrera.component';
-import { RegistrarseComponent } from './components/registrarse/registrarse.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
 
 const routes: Routes = [
   { path: '', component : LoginComponent },
   { path: 'login', component : LoginComponent },
-  { path: 'registrarse', component : RegistrarseComponent },
   { path: 'inicio', component : InicioComponent },
   { path: 'carrera', component : CarreraComponent },
   { path: 'asistencia', component : AsistenciaComponent },

@@ -33,12 +33,11 @@ import { AgregarDocenteComponent } from './components/docente/agregar-docente/ag
 import { AgregarGrupoComponent } from './components/grupo/agregar-grupo/agregar-grupo.component';
 import { AgregarContratoComponent } from './components/contrato/agregar-contrato/agregar-contrato.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { RegistrarseComponent } from './components/registrarse/registrarse.component';
 import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReporteComponent } from './components/reporte/reporte.component';
-
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatDatepickerModule, MatFormFieldModule } from '@angular/material'
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,8 +54,7 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     AgregarAsistenciaComponent,
     AgregarDocenteComponent,
     AgregarGrupoComponent,
-    AgregarContratoComponent,
-    RegistrarseComponent, 
+    AgregarContratoComponent, 
     ReporteComponent,
   ],
   imports: [
@@ -82,7 +80,10 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     MatTooltipModule,
     MatSelectModule,
     MatGridListModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatFormFieldModule,
+    MatMenuModule
   ],
   providers: [AngularFireAuth],
   bootstrap: [AppComponent],
@@ -97,7 +98,6 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     GrupoComponent,
     AgregarContratoComponent,
     ContratoComponent,
-    RegistrarseComponent,
   ],
 })
 

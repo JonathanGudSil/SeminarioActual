@@ -40,7 +40,7 @@ import { Observable } from 'rxjs/internal/Observable';
         }));
       }
       getAllAsistenciaDocente(email: string) {
-        console.log("EMAIL", email);
+
         this.grupoCollectionDocente = this.afs.collection<asistenciaInterface>('asistencia', ref => ref.where('docente_id','==',email));
         return this.asistencia = this.asistenciaCollection.snapshotChanges()
           .pipe(map(changes => {
@@ -51,9 +51,23 @@ import { Observable } from 'rxjs/internal/Observable';
             });
           }));
         }
+        getAllAsistenciaModuloFecha(fecha:Date,modulo: string) {
+
+          this.grupoCollectionDocente = this.afs.collection<asistenciaInterface>('asistencia', ref => ref.where('modulo','==',modulo));
+        
+          return this.asistencia = this.asistenciaCollection.snapshotChanges()
+            .pipe(map(changes => {
+              return changes.map(action => {
+                const data = action.payload.doc.data() as asistenciaInterface;
+                data.id = action.payload.doc.id;
+                return data;
+              });
+            }));
+          }
     addAsistencia(grupo: asistenciaInterface): void {
         //console.log(grupo);
-        this.asistenciaCollection.add(grupo);
+        var d = JSON.parse(JSON.stringify(grupo));
+        this.asistenciaCollection.add(d);
 
     }
 

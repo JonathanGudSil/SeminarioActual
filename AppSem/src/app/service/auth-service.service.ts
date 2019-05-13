@@ -14,6 +14,7 @@ export class AuthServiceService {
   constructor(private afsAuth: AngularFireAuth, private afs: AngularFirestore) { }
 
   registerUser(email: string, pass: string){
+
     return new Promise ((resolve, reject)=>{
       this.afsAuth.auth.createUserWithEmailAndPassword(email,pass).then(userData=>resolve(userData),
       err => reject(err));

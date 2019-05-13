@@ -2,7 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import {Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DocenteService} from './../../../service/docente.service';
-import { NgForm, FormsModule} from '@angular/forms';
+  import { NgForm, FormsModule} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthServiceService } from '../../../service/auth-service.service';
 @Component({

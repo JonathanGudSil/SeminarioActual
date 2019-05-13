@@ -37,8 +37,8 @@
               <mat-grid-tile>
                   <mat-form-field>
                     <mat-label>Tipo de Contrato</mat-label>
-                    <mat-select matNativeControl required [(value)]="selected" [(ngModel)]="this.dataApi.selectedDocente.contrato" name="contrato">
-                        <mat-option value="Indeterminado">Indeterminado</mat-option>
+                    <mat-select matNativeControl required [(ngModel)]="this.dataApi.selectedDocente.contrato" name="contrato">
+                        <mat-option value="Determinado">Determinado</mat-option>
                         <mat-option value="Servicio">Servicio</mat-option>
                       </mat-select>
                   </mat-form-field>
@@ -63,7 +63,7 @@
                       <input matInput [(ngModel)]="this.dataApi.selectedDocente.telefono" name="telefono"  placeholder = "Teléfono" type="text" required > 
                     </mat-form-field >
               </mat-grid-tile>
-              <mat-grid-tile>
+              <mat-grid-tile *ngIf="dataApi.selectedDocente.id == null">
                   <mat-form-field> 
                       <mat-icon matPrefix>
                         <br> contacts &nbsp;
@@ -71,7 +71,7 @@
                       <input type="email" matInput   id="username" name="username"  placeholder = "Correo" [(ngModel)]="username" required > 
                     </mat-form-field>
               </mat-grid-tile>
-              <mat-grid-tile>
+              <mat-grid-tile *ngIf="dataApi.selectedDocente.id == null">
                   <mat-form-field> 
                       <mat-icon matPrefix>
                         <br> ballot &nbsp;
