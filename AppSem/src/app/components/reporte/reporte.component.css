@@ -14,4 +14,12 @@
 .center{
     text-align: center;
   }
-  
+  .example-form{
+    width: 250px;
+    margin: 0 auto;
+    padding: 2px;
+    height: 80px;
+    min-width: 150px;
+    max-width: 350px;
+    width: 100%;
+   }

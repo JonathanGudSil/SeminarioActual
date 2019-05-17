@@ -64,7 +64,6 @@ export class ReporteComponent implements OnInit {
   getdata(f:Date,m:string){
     this.dataAsistencia.getAllAsistenciaDocente(this.email).subscribe(
       grupo => {
-        console.log(this.email);
         this.topoChart(grupo);
       }
     )
