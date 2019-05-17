@@ -20,15 +20,15 @@ export class AgregarCarreraComponent implements OnInit {
     if (formCarrera.value.id == null) {
       this.dataApi.addCarrera(formCarrera.value);
       Swal.fire(
-        'Registrado!',
-        'You clicked the button!',
+        'Operación Exitosa!',
+        'Sus datos han sido guardado',
         'success'
       )
     } else {
       this.dataApi.updateCarrera(formCarrera.value);
       Swal.fire(
-        'Actualizado!',
-        'You clicked the button!',
+        'Operación Exitosa!',
+        'Sus datos han sido actualizados!',
         'success'
       )
     }

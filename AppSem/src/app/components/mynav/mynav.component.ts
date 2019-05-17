@@ -59,6 +59,7 @@ public usuario: string;
                 localStorage.setItem("mail",auth.email);
                 this.isadmin = false;
               }
+              this.usuario = localStorage.getItem('mail');
               this.isLogged = true;
             }else{
               console.log(auth.email);
@@ -72,6 +73,7 @@ public usuario: string;
                 localStorage.setItem("mail",auth.email);
                 this.isadmin = false;
               }
+              this.usuario = localStorage.getItem('mail');
               this.isLogged = true;
             }
           
@@ -97,6 +99,7 @@ public usuario: string;
   }
 
   logoutUser(){
+    this.isLogged = false;
     this.AuthService.logoutUser();
     localStorage.clear();
     localStorage.setItem('rol','');
