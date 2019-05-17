@@ -21,6 +21,7 @@ export class AgregarGrupoComponent implements OnInit {
   public carrera:  carreraInterface[];
 
   constructor(public dialog:MatDialog,public afs: AngularFirestore, public dataApi:GrupoService, private dataDocente: DocenteService, private dataCarrera: CarreraService) {
+    
     this.dataDocente.getAlldocentes().subscribe(docente => {
       this.docentes = docente
     });

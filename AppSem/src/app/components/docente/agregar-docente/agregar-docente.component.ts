@@ -13,7 +13,9 @@ import { AuthServiceService } from '../../../service/auth-service.service';
 
 export class AgregarDocenteComponent implements OnInit {
 
-  constructor(public dialog:MatDialog,public dataApi:DocenteService,private authService: AuthServiceService) { }
+  constructor(public dialog:MatDialog,public dataApi:DocenteService,private authService: AuthServiceService) { 
+    console.log("MAIL", localStorage.getItem("mail"));
+  }
   public username: string = '';
   public userpass: string = '';
   public correo: boolean = false;
@@ -29,6 +31,7 @@ export class AgregarDocenteComponent implements OnInit {
           'La cuenta ha sido creada',
           'success'
         );
+        
         this.username ='';
         this.userpass = '';
       }).catch(err => Swal.fire(

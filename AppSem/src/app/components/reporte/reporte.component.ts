@@ -8,6 +8,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import * as _ from 'lodash';
 import * as moment from 'moment/moment';
 import Swal from 'sweetalert2';
+import * as jsPDF from 'jspdf';
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
@@ -24,6 +25,7 @@ export class ReporteComponent implements OnInit {
   filteredAsistencia: any;
   filters = {};
   asistencia: any;
+  @ViewChild('reporte') content: ElementRef;
   constructor(public dataAsistencia:AsistenciaService,public grupoService: GrupoService) {
 
     this.grupoService.getAllGrupo().subscribe(grupos =>{
@@ -129,5 +131,21 @@ export class ReporteComponent implements OnInit {
     }
     
     
+  }
+
+  descargar(): void{
+    let doc = new jsPDF();
+    let specialElementHandlers = {
+      '#editor': function(element, renderer){
+        return true;
+      }
+    };
+
+    let content = this.content.nativeElement;
+    doc.fromHTML(content.innerHTML,15,15,{
+      'width': 190,
+      'elementHandlers': specialElementHandlers
+    });
+    doc.save('ReporteAsistencia_'+this.modulo + "_"+ this.fecha);
   }
 }

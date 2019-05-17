@@ -41,8 +41,8 @@ import { Observable } from 'rxjs/internal/Observable';
       }
       getAllGrupoDocente(email: string) {
         console.log("EMAIL", email);
-        this.grupoCollectionDocente = this.afs.collection<grupoInterface>('grupo', ref => ref.where('docente_id','==',email));
-        return this.grupo = this.grupoCollection.snapshotChanges()
+        this.grupoCollectionDocente = this.afs.collection<grupoInterface>('grupo', ref => ref.where('docente_id','==',email.trim()));
+        return this.grupo = this.grupoCollectionDocente.snapshotChanges()
           .pipe(map(changes => {
             return changes.map(action => {
               const data = action.payload.doc.data() as grupoInterface;

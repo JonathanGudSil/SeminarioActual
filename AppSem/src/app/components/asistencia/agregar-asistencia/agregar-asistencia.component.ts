@@ -8,6 +8,7 @@ import { NgForm, FormsModule} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { docenteInterface } from 'src/app/models/docente.modal';
+import {FormControl} from '@angular/forms';
 @Component({
   selector: 'app-agregar-asistencia',
   templateUrl: './agregar-asistencia.component.html',
@@ -15,10 +16,15 @@ import { docenteInterface } from 'src/app/models/docente.modal';
 })
 export class AgregarAsistenciaComponent implements OnInit {
 
+  public date: any;
+  public modulo2: string;
   constructor(public dialog:MatDialog,public dataApi:AsistenciaService, public grupoService: GrupoService) { 
+    
+    this.grupo = null;
     this.grupoService.getAllGrupoDocente(localStorage.getItem('mail')).subscribe(grupos =>{
-      this.grupo = grupos
+      this.grupo = grupos;
     })
+
 
   }
   public GrupoCollection: AngularFirestoreCollection<grupoInterface>
@@ -26,7 +32,10 @@ export class AgregarAsistenciaComponent implements OnInit {
   ngOnInit() {
   }
 
-
+  smodulo():void{
+    console.log(this.modulo2);
+    this.dataApi.selectedGrupo.modulo = this.modulo2;
+  }
   onGuardarAsistencia(formGrupo: NgForm): void{
     if (formGrupo.valid){
       if (formGrupo.value.id == null){

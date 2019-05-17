@@ -3,7 +3,7 @@ export interface asistenciaInterface {
     modulo?:string;
     mujeres?: number;
     varones?: number;
-    fecha?:Date;
+    fecha?:any;
     observaciones?:string;
     docente?:string;
     

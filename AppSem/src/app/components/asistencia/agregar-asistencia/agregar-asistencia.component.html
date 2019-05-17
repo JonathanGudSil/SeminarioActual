@@ -10,19 +10,20 @@
         <mat-grid-tile [colspan]="2" [rowspan]="1">
             <mat-form-field>
                 <mat-label>Módulo</mat-label>
-                <mat-select [(ngModel)]="this.dataApi.selectedGrupo.modulo" name="modulo">
+                <mat-select  [(ngModel)]="this.dataApi.selectedGrupo.modulo"  name="modulo">
                   <mat-option *ngFor="let item of grupo" [value]="item.modulo">
                     {{item.modulo}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
         </mat-grid-tile>
+        <!--input type="text" [(ngModel)]="this.dataApi.selectedGrupo.modulo"  name="modulo" value="{{modulo2}}">-->
         <mat-grid-tile>
           <mat-form-field  class = "example-full-width" > 
             <mat-icon matPrefix>
               <br> contacts &nbsp;
             </mat-icon>
-            <input matInput type="number" [(ngModel)]="this.dataApi.selectedGrupo.mujeres" placeholder="Mujeres" name="mujeres" >
+            <input matInput type="number" min="1" max="50" mdInput  [(ngModel)]="this.dataApi.selectedGrupo.mujeres" placeholder="Mujeres" name="mujeres" >
           </mat-form-field >
         </mat-grid-tile>
         <mat-grid-tile>
@@ -30,13 +31,13 @@
             <mat-icon matPrefix>
               <br> contacts &nbsp;
             </mat-icon>
-            <input matInput type="number" [(ngModel)]="this.dataApi.selectedGrupo.varones" placeholder="Varones" name="varones" >
+            <input matInput type="number"  min="1" max="50" [(ngModel)]="this.dataApi.selectedGrupo.varones" placeholder="Varones" name="varones" >
           </mat-form-field >
         </mat-grid-tile>
         <mat-grid-tile> 
             <mat-form-field  class = "example-full- width" > 
                 
-                <input matInput [matDatepicker]="picker" placeholder="Fecha" [(ngModel)]="this.dataApi.selectedGrupo.fecha" name="fecha" required>
+                <input matInput [matDatepicker]="picker" placeholder="Fecha"  [(ngModel)]="this.dataApi.selectedGrupo.fecha"  name="fecha" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <!--<input type="datetime" matInput [(ngModel)]="this.dataApi.selectedGrupo.fecha" name="fecha" placeholder = "Fecha" type="text" required > -->

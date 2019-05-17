@@ -15,7 +15,7 @@
       <!--<a href="" *ngIf="isLogged == true;" (click)="logoutUser()" style="color:white;"><mat-icon>exit_to_app</mat-icon></a>-->
       <button *ngIf="isLogged == true;" mat-button [matMenuTriggerFor]="menu">{{ usuario }}</button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item><mat-icon>face</mat-icon>Cambiar Contraseña</button>
+        <button mat-menu-item (click)="resetPassword();"><mat-icon>face</mat-icon>Cambiar Contraseña</button>
         <button mat-menu-item (click)="logoutUser()"><mat-icon>exit_to_app</mat-icon>Cerrar Sesión</button>
       </mat-menu>
     </mat-toolbar>

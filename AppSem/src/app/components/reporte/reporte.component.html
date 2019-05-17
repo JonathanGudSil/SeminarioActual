@@ -1,6 +1,6 @@
 <div class="col m12 card subside">
     <img src="./../../assets/imagen/logo.png" class="image1">
-    <h2 class="center"> Reporte de Asistencia</h2>
+ 
 </div>
 <form style="text-align: center;" id="formReporte" name="formReporte" #formReporte="ngForm" >            
         <mat-card class="card">
@@ -22,9 +22,14 @@
                           </mat-form-field>
                           <br>
                     <button mat-raised-button color="primary" (click)="generar();">Generar</button>
-                    <div #chart style="width: 100%;">
-
+                    <button mat-raised-button color="primary" style="margin-left: 10px;"  (click)="descargar()">Descargar PDF</button>
+                    <div #reporte>
+                        <h2 class="center"> Reporte de Asistencia</h2>
+                      <div #chart style="width: 100%;" style="text-align: center;margin: 0 auto;">
+                      
+                      </div>
                     </div>
+                   
                 
                
         </mat-card> 

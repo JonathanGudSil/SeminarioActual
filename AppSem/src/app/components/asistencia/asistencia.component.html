@@ -28,9 +28,9 @@
     </div>
 <br>
     <div #reporte>
-      <div class="col m12 card subside">
+      <div class="col m12 card subside" *ngIf="admin == false;">
   
-        <h4 class="center"> Reporte de Asistencia del {{ this.fecha_reporte }}</h4>
+        <h4 class="center" > Reporte de Asistencia del {{ this.fecha_reporte }}</h4>
        
       </div>
       <br><br>

@@ -22,6 +22,7 @@ export class AsistenciaComponent implements OnInit {
   public fecha: Date;
   public fecha_reporte: string;
   asistencia: any;
+  public data:any;
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -42,6 +43,7 @@ export class AsistenciaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+    
   }
 
   getListGrupo(){
@@ -65,30 +67,30 @@ export class AsistenciaComponent implements OnInit {
       this.isadmin = true;
       this.displayedColumns = ['modulo', 'mujeres', 'varones', 'total', 'observacion'];
     }
-   // this.getListGrupo();
+    this.getListGrupo();
     this.dataAsistencia.getAllAsistencia().subscribe(asistencia => {
       this.asistencia = asistencia;
     })
   }
 
   generar():void{
-    var data = [];
+    this.data = [];
     this.asistencia.forEach(element => {
         if (this.fecha.toJSON("yyyy-MM-dd") == element.fecha){
-          data.push(element);
+          this.data.push(element);
         }
 
         
     });
 
-    if (data.length == 0){
+    if (this.data.length == 0){
       Swal.fire(
         'Registro Vacio',
         '¡No se encontro registro!',
         'warning'
       );
     }else{
-      this.dataSource.data = data;
+      this.dataSource.data = this.data;
       this.fecha_reporte = this.fecha.toISOString().slice(0,10);
     }
 
@@ -96,20 +98,30 @@ export class AsistenciaComponent implements OnInit {
   }
 
   descargar(): void{
-    let doc = new jsPDF();
-    let specialElementHandlers = {
-      '#editor': function(element, renderer){
-        return true;
-      }
-    };
 
-    let content = this.content.nativeElement;
-    console.log(content.innerHTML);
-    doc.fromHTML(content.innerHTML,15,15,{
-      'width': 190,
-      'elementHandlers': specialElementHandlers
-    });
-    doc.save('ReporteAsistencia_'+this.fecha_reporte);
+    if (this.data.length == 0){
+      Swal.fire(
+        'Registro Vacio',
+        '¡No se encontro registro!',
+        'warning'
+      );
+    }else{
+      let doc = new jsPDF();
+      let specialElementHandlers = {
+        '#editor': function(element, renderer){
+          return true;
+        }
+      };
+
+      let content = this.content.nativeElement;
+      console.log(content.innerHTML);
+      doc.fromHTML(content.innerHTML,15,15,{
+        'width': 190,
+        'elementHandlers': specialElementHandlers
+      });
+      doc.save('ReporteAsistencia_'+this.fecha_reporte);
+    }
+   
   }
 
   onPreUpdateAsistente(grupo: grupoInterface) {

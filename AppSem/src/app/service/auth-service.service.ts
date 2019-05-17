@@ -15,10 +15,16 @@ export class AuthServiceService {
 
   registerUser(email: string, pass: string){
 
+    
     return new Promise ((resolve, reject)=>{
-      this.afsAuth.auth.createUserWithEmailAndPassword(email,pass).then(userData=>resolve(userData),
+      this.afsAuth.auth.createUserWithEmailAndPassword(email,pass).then(
+        userData=>resolve(userData),
       err => reject(err));
     });
+  }
+
+  resetPassword(email: string) {
+    this.afsAuth.auth.sendPasswordResetEmail(email);
   }
 
   loginEmailUser(email: string, pass: string){
